@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Audioguide - Museum 2.0</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/logo.png">
+
+<!-- Dateien für Fancybox, der Lightbox -->
+<script src="js/jquery.min.js"></script>
+<link rel="stylesheet" href="css/jquery.fancybox.min.css" />
+<script src="js/jquery.fancybox.min.js"></script>
+
+<!-- normale CSS und eine für Breite<800 -->
+<link rel="stylesheet" href="css/style.css">
+<link type="text/css" rel="stylesheet" media="only screen and (max-device-width: 800px)" href="css/phone.css" />
+
+<!-- Schriftart für ein schönes Burgermenu -->
+<script src="js/fontawesome.js" crossorigin="anonymous"></script>
+
+<!-- für die Playerfunktionalität -->
+<script>
+var audio = new Audio('mp3s/datasette.mp3');
+var state = 0; // 0 = spielt gerade nicht, 1 = spielt gerade
+
+// wenn Audio fertig abgespielt
+audio.onended = function() {
+    document.getElementById("button").src = "images/play.png";
+	state = 0;
+}; 
+
+function play() 	 {
+	audio.play();
+	document.getElementById("button").src = "images/pause.png";
+}
+
+function stop() {
+	audio.pause();
+	document.getElementById("button").src = "images/play.png";
+}
+
+// umschalten: play/pause
+function toggle() {
+	if (state==0) {
+		play();
+		state=1;
+	} else {
+		stop();
+		state=0;
+	}
+}
+</script>
+
+</head>
+<body>
+
+<div id="header">
+<img height="100%" id="button" src="images/play.png" onclick="toggle()" alt="Beschreibung abspielen bzw. pausieren"/> 
+<div id ="überschrift">Datasette</div>
+</div>
+
+<div id="nav">
+  <nav>
+  <h1>Navigation</h1>
+  <hr>
+<ul>
+<li><a href="slt286.html">Compaq SLT 286</a></li>
+<li><a href="armada7750.html">Compaq Armada 7750 MT</a></li>
+<li><a href="telefonfach1.html">Akustikkoppler und Wählscheibentelefon</a></li>
+<li><a href="telefonfach2.html">Mobile Telefone</a></li>
+<li><a href="festplatten.html">Festplatten</a></li>
+<li><a href="mäuse.html">Mäuse</a></li>
+<li><a href="c16_c64.html">C16 und C64</a></li>
+<li><a href="diskdrive.html">1541 Disk Drive</a></li>
+<li class="currsite">Datasette</li>
+<li><a href="buecher.html">Handbücher und Input64</a></li>
+<li><a href="eprommer.html">E-Prommer</a></li>
+<li><a href="amiga500.html">Amiga 500</a></li>
+<li><a href="ferritkernspeicher.html">Ferritkernspeicher</a></li>
+<li><a href="rams_cpus.html">RAMs und CPUs</a></li>
+<li><a href="mobilemusik.html">Mobile Musik</a></li>
+<li><a href="magnetband_lc80.html">LC80 und Magnetband</a></li>
+<li><a href="lochstreifen.html">Lochstanzer</a></li>
+<li><a href="impressum.html">Impressum</a></li>
+</ul>
+</nav>
+</div>
+
+<!-- Beschreibungstext zum Ausstellungsstück -->
+<div id="textbox">
+<h3>Datasette</h3>
+<p>
+Was Sie hier sehen, sind keine Hörspielkassetten, sondern Programmkassetten, die unter anderem Spiele enthielten. Abgespielt werden konnten Sie mit einer Datasette, ein Kassettenlaufwerk, das an den C16 angeschlossen werden konnte.
+</p>
+</div>
+
+<!-- Gallerie mit Fancybox -->
+<div id="imagebox">
+<a data-caption="Datasette" data-fancybox="gallery" href="images/datasette1.png"><img width="auto" height="130" src="images/thumbs/datasette1.png" alt="Foto einer Datasette"></a>
+<a data-caption="Kassette für die Datasette" data-fancybox="gallery" href="images/datasette2.png"><img width="auto" height="130" src="images/thumbs/datasette2.png" alt="Foto von Kassetten für die Datasette"></a>
+
+</div>
+
+<div id="footer"></div>
+</body>
+</html>
